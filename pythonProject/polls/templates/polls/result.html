@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends 'polls/base.html' %}
+
+    {% block content %}
+        {% if question %}
+            <h1><p>{{question.question_text}}</p></h1>
+            <h2>Ket qua binh chon la: </h2>
+            {% for item in question.choice_set.all %}
+                <p>{{item.choice_text}} : <span style="color: red">{{item.vote}}</span></p>
+            {% endfor %}
+        <a href ="{% url 'polls:questionList' %}">Vote tiếp</a>
+        {% endif %}
+    {% endblock %}
+
+</body>
+</html>
