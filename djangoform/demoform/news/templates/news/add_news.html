@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD NEWS</title>
+</head>
+<body>
+  <form action="{% url 'news:save' %}" method="post">
+          <p> {{ f.title }} </p>
+          <p> {{ f.content }} </p>
+          <p> {{ f.time_create }} </p>
+
+      {% csrf_token %}
+      <input type="submit" value="add">
+  </form>
+</body>
+</html>
