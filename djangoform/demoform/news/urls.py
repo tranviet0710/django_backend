@@ -3,9 +3,9 @@ from . import views
 
 app_name = "news"
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('add/', views.add_post, name='add'),
-    path('save/', views.save_news, name='save'),
-    path('email/', views.send_email, name='send'),
-    path('emailInFo',  views.show_email, name='showEmail')
+    path('', views.Index.as_view(), name='index'),
+    path('add/', views.AddPost.as_view(), name='add'),
+    path('save/', views.SaveNews.as_view(), name='save'),
+    path('email/', views.Send_Email.as_view(), name='send'),
+    path('emailInFo',  views.ShowEmail.as_view(), name='showEmail')
 ]
