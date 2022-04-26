@@ -7,13 +7,14 @@
         .vietdev{
             padding:20px;
         }
+
     </style>
 </head>
 <body>
-  <form action="{% url 'news:showEmail' %}" method="post">
-      {{ f }}
-      {% csrf_token %}
-      <input type="submit" value="send">
-  </form>
+<form action="{% url 'news:showEmail' %}" method="post">
+    {{ f }}
+    {% csrf_token %}
+    <input type="submit" value="send">
+</form>
 </body>
 </html>
