@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% extends 'polls/base.html' %}
+  {% block content %}
+    {% if questionList %}
+        <ol>
+        {% for item in questionList %}
+            <li>
+            <a href="{% url 'polls:questionDetail' item.id %}">{{ item.question_text }}</a>
+            </li>
+        {% endfor %}
+        </ol>
+    {% else %}
+        <h3 style="color: red;">Khong co du lieu cau hoi nao!!!</h3>
+    {% endif %}
+  {% endblock %}
+</body>
+</html>
