@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>LOGIN</title>
+    <style>
+        .login{
+            text-align : center;
+            border: 3px solid green;
+        }
+    </style>
 </head>
 <body>
-<div class="Login">
-    <form action="" method="post">
+<div class="login">
+    <form action="{% url 'Login:login' %}" method="post">
         {% csrf_token %}
-        <input type="text" name="username">
-        <input type="password" name="password">
-        <input type="submit" value="Dang Nhap">
+        <div>Username: <input type="text" name="username"></div>
+        <div>Password:<input type="password" name="password"></div>
+        <div><input type="submit" value="Dang Nhap"></div>
     </form>
 </div>
 </body>

@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>ADD POST</title>
 </head>
 <body>
-$END$
+<form action="{% url 'Login:add_post' %}" method="post">
+    <div>
+        {% if form %}
+           {{ form }}
+           <input type="submit" value="ADD">
+        {% endif %}
+        {% csrf_token %}
+    </div>
+</form>
 </body>
 </html>
