@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, decorators
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
@@ -26,9 +27,15 @@ class LoginClass(View):
         return render(request, 'Login/successful.html')
 
 
-class ViewUser(View):
+class ViewUser(LoginRequiredMixin, View):
+    login_url = '/login/'
     def get(self, request):
-        if not request.user.is_authenticated:
-            return HttpResponse("Please login!")
-        else:
-            return HttpResponse("<h1>This is view user</h1>")
+        return HttpResponse("<h1>This is view user!</h1>")
+
+    def post(self):
+        pass
+
+
+@decorators.login_required(login_url='/login/')
+def view(request):
+    return HttpResponse("View!!!")
