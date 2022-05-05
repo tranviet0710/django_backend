@@ -2,6 +2,8 @@ from django.urls import path
 
 from . import views
 
+#namespacing url names for each app
+#used to differentiate which app to call url in templates
 app_name = 'Login'
 urlpatterns = [
     path('', views.Index.as_view(), name='index'),
