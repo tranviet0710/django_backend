@@ -2,21 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>VOTING RESULT</title>
 </head>
 <body>
-    {% extends 'polls/base.html' %}
+{% extends 'polls/base.html' %}
 
-    {% block content %}
-        {% if question %}
-            <h1><p>{{question.question_text}}</p></h1>
-            <h2>Ket qua binh chon la: </h2>
-            {% for item in question.choice_set.all %}
-                <p>{{item.choice_text}} : <span style="color: red">{{item.vote}}</span></p>
-            {% endfor %}
-        <a href ="{% url 'polls:questionList' %}">Vote tiếp</a>
-        {% endif %}
-    {% endblock %}
+{% block content %}
+{% if question %}
+    <h1><p>{{question.question_text}}</p></h1>
+    <h2>Ket qua binh chon la: </h2>
+    <ul>
+    {% for choice in question.choice_set.all %}
+<!--        <p>{{choice.choice_text}} : <span style="color: red">{{choice.vote}} vote{{ choice.vote || pluralize}</span></p>-->
+        <li>{{ choice.choice_text }} -- {{ choice.vote }} vote{{choice.vote|pluralize}}</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'polls:vote' question.id %}">Vote again</a>
+{% endif %}
+{% endblock %}
 
 </body>
 </html>
