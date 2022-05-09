@@ -8,17 +8,24 @@
     {% extends 'polls/base.html' %}
 
     {% block content %}
-        <h1>Đây là template</h1>
-        <p>Mình là <b>{{name}}</b> </p>
-        <h2>Tài sản của mình gồm: </h2>
-        <h2>Tài sản của mình gồm: </h2>
-        <ul>
-        {% for item in taisan %}
-                {% if item != 'vo' %}
-                    <li>{{item}}</li>
-                {% endif %}
-        {% endfor %}
-        </ul>
+<!--        <h1>Đây là template</h1>-->
+<!--        <p>Mình là <b>{{name}}</b> </p>-->
+<!--        <h2>Tài sản của mình gồm: </h2>-->
+<!--        <h2>Tài sản của mình gồm: </h2>-->
+<!--        <ul>-->
+<!--        {% for item in taisan %}-->
+<!--                {% if item != 'vo' %}-->
+<!--                    <li>{{item}}</li>-->
+<!--                {% endif %}-->
+<!--        {% endfor %}-->
+<!--        </ul>-->
+        {% if latest_question_list %}
+         <ol>
+             {% for item in latest_question_list %}
+                <li> {{ item.question_text }}</li>
+            {% endfor %}
+        </ol>
+        {% endif %}
 
     {% endblock %}
 </body>
