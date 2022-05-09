@@ -4,6 +4,8 @@ from .models import Question, Choice
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+
+
 # Create your view here.
 
 # def index1(request):
@@ -48,6 +50,7 @@ from django.utils import timezone
 #     question = get_object_or_404(Question, pk=question_id)
 #     return render(request, 'polls/result.html', {"question": question})
 
+
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
@@ -64,7 +67,13 @@ class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail_question.html'
 
+    def get_queryset(self):
+        return Question.objects.filter(time_pub__lte=timezone.now())
+
 
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/result.html'
+
+    def get_queryset(self):
+        return Question.objects.filter(time_pub__lte=timezone.now())
