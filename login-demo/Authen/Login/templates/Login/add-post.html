@@ -8,8 +8,8 @@
 <form action="{% url 'Login:add_post' %}" method="post">
     <div>
         {% if form %}
-           {{ form }}
-           <input type="submit" value="ADD">
+            {{ form }}
+            <input type="submit" value="ADD">
         {% endif %}
         {% csrf_token %}
     </div>
