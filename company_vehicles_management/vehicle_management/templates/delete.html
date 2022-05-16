@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form class="form" method="POST"> {% csrf_token %}
+        <h3>Do you want to delete the vehicle {{ vehicle.name }} ?</h3>
+
+        <input type="submit" class="btn btn-danger" value="Yes"/>
+        <a href="/vehicle/" class="btn btn-primary">Cancel</a>
+    </form>
+
+{% endblock content %}

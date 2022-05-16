@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if vehicle %}
+        <h1>INFORMATION</h1>
+        <p> Name: {{ vehicle.name }} </p>
+        <p> Year: {{ vehicle.year }} </p>
+        <p> Selling price: {{ vehicle.selling_price }} </p>
+        <p> KM driven: {{ vehicle.km_driven }} </p>
+        <p> Transmission: {{ vehicle.transmission }} </p>
+        <p> Category: {{ vehicle.category }} </p>
+    {% endif %}
+    <a href="/vehicle/">Back</a>
+{% endblock %}
+

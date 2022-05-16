@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+    <h1> Hello {{ name | default:'World' |capfirst }} </h1>
+    <h1> My Skills: </h1>
+    <ul>
+        {% for skill in skills %}
+            {% if skill == 'Python' %}
+                <li>  {{ forloop.counter }} - {{ skill|add:" Django "| capfirst }} </li>
+            {% else %}
+                <li>  {{ forloop.counter }} - {{ skill | capfirst }} </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {{ content|safe }}
+{% endblock %}
+</body>
+</html>

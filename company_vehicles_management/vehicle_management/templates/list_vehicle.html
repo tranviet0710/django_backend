@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+{% extends "base.html" %}
+{% block content %}
+    <form class="form" action="/vehicle/search" method="post">
+        {% csrf_token %}
+        <label for="option" style="font-weight: bold">Choose an option: </label>
+        <select name="option" id="option">
+            <option value="select_here" selected>choose here</option>
+            <option value="name">name</option>
+            <option value="year">year</option>
+            <option value="transmission">transmission</option>
+            <option value="category">category</option>
+        </select>
+        <div class="row">
+            <div class="col-auto" id="search_box">
+                <label>
+                    <input type="text" class="form-control" placeholder="Keyword" name="keyword"
+                           value="{{ keyword|default:'' }}">
+                </label>
+            </div>
+            <div class="col-auto">
+                <input type="submit" class="btn btn-primary" value="Search">
+            </div>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+        <th>id</th>
+        <th>name</th>
+        <th>year</th>
+        <th>selling_price</th>
+        <th>km_driven</th>
+        <th>transmission</th>
+        <th>category</th>
+        <th><a href="/vehicle/create" class="btn btn-submit" style="color: #fff; background-color:#0a0a23">ADD
+            VEHICLE</a></th>
+        <th><a href="/vehicle/create_category" class="btn btn-submit" style="color: #fff; background-color:#0a0a23">ADD
+            CATEGORY</a></th>
+        </thead>
+        <tbody>
+        {% for vehicle in vehicles %}
+            <tr>
+                <td>{{ vehicle.id }}</td>
+                <td><a href="/vehicle/detail/{{ vehicle.id }}">{{ vehicle.name }}</a></td>
+                <td>{{ vehicle.year }}</td>
+                <td>{{ vehicle.selling_price }}</td>
+                <td>{{ vehicle.km_driven }}</td>
+                <td>{{ vehicle.transmission }}</td>
+                <td>{{ vehicle.category }}</td>
+                <td>
+                    <a href="/vehicle/update/{{ vehicle.id }}" class="btn btn-primary">Update</a>
+                    <a href="/vehicle/delete/{{ vehicle.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+</body>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+</html>
